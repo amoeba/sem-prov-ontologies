@@ -59,7 +59,7 @@ def copy_all_html():
         basename = os.path.basename(path)
         new_path = Path(BASEDIR, basename)
         os.rename(path, new_path)
-        new_paths.append(new_path)
+        new_paths.append(os.dir.basename(new_path))
 
     return new_paths
 
@@ -81,8 +81,8 @@ def main():
     for path in Path(".").glob(GLOB_PATTERN):
         process(path)
 
-    ontologies = copy_all_html()
-    build_index(ontologies)
+    html_files = copy_all_html()
+    build_index(html_files)
 
 if __name__ == "__main__":
     main()
