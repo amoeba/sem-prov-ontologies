@@ -1,0 +1,8 @@
+<body>
+  <h1>Ontologies</h1>
+  <ul>
+    {% for ontology in ontologies %}
+      <li><a href="{{ontology}}">{{ontology}}</a></li>
+    {% endfor %}
+  </ul>
+</body>
