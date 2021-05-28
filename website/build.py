@@ -59,7 +59,7 @@ def copy_all_html():
         basename = os.path.basename(path)
         new_path = Path(BASEDIR, basename)
         os.rename(path, new_path)
-        new_paths.append(os.dir.basename(new_path))
+        new_paths.append(os.path.basename(new_path))
 
     return new_paths
 
