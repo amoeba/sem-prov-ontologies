@@ -15,6 +15,7 @@ jobs:
         with:
           python-version: "3.8"
       - run: python -m pip install pylode
+      - run: python -m pip install jinja
       - run: python website/build.py
       - name: ghpages
         uses: JamesIves/github-pages-deploy-action@4.1.3
