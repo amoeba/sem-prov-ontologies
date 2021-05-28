@@ -41,9 +41,9 @@ def process(path):
     try:
         run_pylode(newpath)
     except xml.sax._exceptions.SAXParseException:
-        newpath = Path(get_tmp_dir(), os.path.basename(newpath).replace(".owl", ".ttl"))
-        os.rename(newpath, newpath)
-        run_pylode(newpath)
+        renamedpath = Path(get_tmp_dir(), os.path.basename(newpath).replace(".owl", ".ttl"))
+        os.rename(newpath, renamedpath)
+        run_pylode(renamedpath)
 
 
 def copy_html():
@@ -51,12 +51,13 @@ def copy_html():
         os.rename(path, Path(BASEDIR, os.path.basename(path)))
 
 def main():
-    # create_tmp_dir()
+    create_tmp_dir()
 
-    # for path in Path(".").glob(GLOB_PATTERN):
-    #     process(path)
+    for path in Path(".").glob(GLOB_PATTERN):
+        print(path)
 
-    copy_html()
+        process(path)
+        copy_html()
 
 
 if __name__ == "__main__":
