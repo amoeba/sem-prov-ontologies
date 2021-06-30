@@ -63,7 +63,14 @@ def copy_all_html():
 
     return new_paths
 
-def build_index(ontologies):
+def parse_ontology(path):
+    return {
+        "name": path.replace(".html", ""),
+        "path": path
+    }
+
+def build_index(html_files):
+    ontologies = [parse_ontology(file) for file in html_files]
     output = None
 
     with open(INDEX_TEMPLATE, "r") as index_template:
