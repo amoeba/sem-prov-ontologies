@@ -27,7 +27,7 @@ def run_pylode(path):
 
     print(f"Running PyLODE on {path}")
     html = pylode.MakeDocco(
-        input_data_file=str(path), outputformat="html", profile="ontdoc"
+        input_data_file=str(path), outputformat="html", profile="dataone"
     ).document()
 
     with open(out_path, "w") as html_file:
@@ -44,10 +44,11 @@ def process(path):
     # Try processing one. If it fails, try processing as Turtle
     try:
         return run_pylode(newpath)
-    except xml.sax._exceptions.SAXParseException:
+    except Exception:
         print("Re-processing as Turtle...")
         renamedpath = Path(get_tmp_dir(), os.path.basename(newpath).replace(".owl", ".ttl"))
         os.rename(newpath, renamedpath)
+
         return run_pylode(renamedpath)
 
 def copy_all_html():
@@ -63,7 +64,14 @@ def copy_all_html():
 
     return new_paths
 
-def build_index(ontologies):
+def parse_ontology(path):
+    return {
+        "name": path.replace(".html", ""),
+        "path": path
+    }
+
+def build_index(html_files):
+    ontologies = [parse_ontology(file) for file in html_files]
     output = None
 
     with open(INDEX_TEMPLATE, "r") as index_template:
