@@ -27,7 +27,7 @@ def run_pylode(path):
 
     print(f"Running PyLODE on {path}")
     html = pylode.MakeDocco(
-        input_data_file=str(path), outputformat="html", profile="ontdoc"
+        input_data_file=str(path), outputformat="html", profile="dataone"
     ).document()
 
     with open(out_path, "w") as html_file:
@@ -44,7 +44,7 @@ def process(path):
     # Try processing one. If it fails, try processing as Turtle
     try:
         return run_pylode(newpath)
-    except xml.sax._exceptions.SAXParseException:
+    except Exception:
         print("Re-processing as Turtle...")
         renamedpath = Path(get_tmp_dir(), os.path.basename(newpath).replace(".owl", ".ttl"))
         os.rename(newpath, renamedpath)
