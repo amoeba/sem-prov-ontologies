@@ -47,7 +47,7 @@ def process(path):
     except Exception:
         print("Re-processing as Turtle...")
         renamedpath = Path(get_tmp_dir(), os.path.basename(newpath).replace(".owl", ".ttl"))
-        size = os.stat("renamedpath").st_size
+        size = os.stat(renamedpath).st_size
         print(f"size is {size}")
         os.rename(newpath, renamedpath)
         return run_pylode(renamedpath)
