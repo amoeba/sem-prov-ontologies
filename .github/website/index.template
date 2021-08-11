@@ -1,0 +1,8 @@
+<body>
+  <h1><code>sem-prov-ontologies</code></h1>
+  <ul>
+    {% for ontology in ontologies %}
+      <li><a href="{{ontology.path}}">{{ontology.name}}</a></li>
+    {% endfor %}
+  </ul>
+</body>
