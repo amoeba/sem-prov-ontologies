@@ -1,3 +1,0 @@
-rdflib
-git+https://github.com/amoeba/pylode.git
-jinja2
