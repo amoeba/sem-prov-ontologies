@@ -17,7 +17,7 @@ jobs:
           java-version: '11'
       - run: curl -O https://mirror.nodesdirect.com/apache/jena/binaries/apache-jena-4.1.0.tar.gz
       - run: tar xzf apache-jena-4.1.0.tar.gz
-      - run: ./apache-jena-4.1.0/bin/riot --version
+      - run: while read line; do ./apache-jena-4.1.0/bin/riot --validate "$line"; done < ./.github/ontologies.txt
   website:
     needs: validate
     runs-on: ubuntu-latest
