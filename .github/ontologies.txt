@@ -1,4 +1,4 @@
-./MOSAIC/MOSAIC.owl
+./MOSAiC/MOSAiC.owl
 ./arctic-report-card/ARCRC_v0.9.owl
 ./observation/ECSO4.owl
 ./proenance/ProvONE/v1/owl/provone.owl
