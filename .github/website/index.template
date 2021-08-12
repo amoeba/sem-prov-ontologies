@@ -10,7 +10,6 @@
         max-width: 660px;
         margin: 0 auto;
         color: rgb(34, 34, 34);
-        margin: 0;
         padding: 1em;
       }
 
