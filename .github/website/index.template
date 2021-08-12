@@ -1,8 +1,22 @@
-<body>
-  <h1><code>sem-prov-ontologies</code></h1>
-  <ul>
-    {% for ontology in ontologies %}
-      <li><a href="{{ontology.path}}">{{ontology.name}}</a></li>
-    {% endfor %}
-  </ul>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>sem-prov-ontologies</title>
+    <style>
+      body {
+        font-size: 16px;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DataONE Ontologies">
+  </head>
+  <body>
+    <h1>sem-prov-ontologies</h1>
+    <ul>
+      {% for ontology in ontologies %}
+        <li><a href="./{{ontology}}.html">{{ontology.title}}</a> [<a href="{{ontology.name}}.owl">OWL</a>]</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
