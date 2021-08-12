@@ -10,6 +10,7 @@ BASEDIR = os.path.dirname(os.path.realpath(__file__))
 ONTOLOGIES_FILE = os.path.join(BASEDIR, "../ontologies.txt")
 INDEX_TEMPLATE = os.path.join(BASEDIR, "index.template")
 
+
 def get_build_dir():
     return Path(BASEDIR, "_build")
 
@@ -28,10 +29,7 @@ def get_ontologies():
 
 
 def parse_ontology(path):
-    return {
-        "name": path.replace(".html", ""),
-        "path": path
-    }
+    return {"name": path.replace(".html", ""), "path": path}
 
 
 def process_ontology(ontology):
@@ -47,7 +45,9 @@ def process_ontology(ontology):
         return run_pylode(newpath)
     except Exception:
         print("Re-processing as Turtle...")
-        renamedpath = os.path.join(get_build_dir(), os.path.basename(newpath).replace(".owl", ".ttl"))
+        renamedpath = os.path.join(
+            get_build_dir(), os.path.basename(newpath).replace(".owl", ".ttl")
+        )
         os.rename(newpath, renamedpath)
 
         return run_pylode(renamedpath)
@@ -72,6 +72,7 @@ def run_pylode(path):
 def process_ontologies():
     for ontology in get_ontologies():
         process_ontology(ontology)
+
 
 def copy_pylode_output():
     new_paths = []
@@ -106,6 +107,7 @@ def main():
     create_build_dir()
     process_ontologies()
     build_index()
+
 
 if __name__ == "__main__":
     main()
