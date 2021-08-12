@@ -15,7 +15,7 @@
     <h1>sem-prov-ontologies</h1>
     <ul>
       {% for ontology in ontologies %}
-        <li><a href="./{{ontology}}.html">{{ontology.title}}</a> [<a href="{{ontology.name}}.owl">OWL</a>]</li>
+        <li><a href="./{{ontology.name}}.html">{{ontology.title}}</a> [<a href="{{ontology.name}}.owl">OWL</a>]</li>
       {% endfor %}
     </ul>
   </body>
